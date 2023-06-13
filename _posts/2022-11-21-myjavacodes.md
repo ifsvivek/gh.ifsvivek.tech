@@ -1,6 +1,6 @@
 ---
 title: "My java codes."
-author: Vivek Sharma
+
 date: 2022-11-21 00:00:00 -500
 categories: [java, code,practice]
 tags: [java,codes]

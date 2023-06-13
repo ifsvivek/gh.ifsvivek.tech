@@ -1,6 +1,6 @@
 ---
 title: "Real-Time Light Sensor Data Plotting using Python and Matplotlib"
-author: Vivek Sharma
+
 date: 2023-03-19 00:00:00 -500
 categories: [arduino, code, python]
 tags: [arduino, code, python]
