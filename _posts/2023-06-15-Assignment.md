@@ -33,7 +33,7 @@ int main() {
     printf("Enter the radius: ");
     scanf("%d", &rad);
     printf("Area: %0.2f\n", 3.14*rad*rad );
-    printf("Perimter: %0.2f", 2*3.14*rad );
+    printf("Perimeter: %0.2f", 2*3.14*rad );
     return 0;
 }
 ```
@@ -48,7 +48,7 @@ int main() {
     printf("Enter L and B: ");
     scanf("%f %f", &l, &b);
     printf("Area: %0.2f\n", l*b );
-    printf("Perimter: %0.2f", 2*(l*b) );
+    printf("Perimeter: %0.2f", 2*(l+b) );
     return 0;
 }
 ```
@@ -67,16 +67,17 @@ int main() {
 }
 ```
 
-## 5. Convert temperature in degree to Fahrenheit
-
+## 5. Swap 2 numbers
 ```c
 #include <stdio.h>
-
+#define SWAP(a, b) do { (a) ^= (b); (b) ^= (a); (a) ^= (b); } while (0)
 int main() {
-    float c;
-    printf("Enter the celsius: ");
-    scanf("%f", &c);
-    printf("Fahrenheit: %0.2f\n",c*9/5+32);
+    int a, b;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    printf("Before Swap\nA=%d\nB=%d",a,b);
+    SWAP(a,b);
+    printf("\nAfter Swap\nA=%d\nB=%d",a,b);
     return 0;
 }
 ```
