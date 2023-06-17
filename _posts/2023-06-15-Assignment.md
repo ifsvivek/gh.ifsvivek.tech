@@ -102,15 +102,10 @@ int main() {
 #include <stdio.h>
 
 int main() {
-    int a,b;
-    printf("Enter Two Number: ");
-    scanf("%d%d",&a,&b);
-    if(a>b){
-        printf("%d is Greater",a);
-    }
-    else{
-        printf("%d is Greater",b);
-    }
+    int a, b;
+    printf("Enter Two Numbers: ");
+    scanf("%d%d", &a, &b);
+    printf("%d is Greater", (a > b) ? a : b);
     return 0;
 }
 ```
@@ -123,14 +118,9 @@ int main() {
 int main() {
     int a;
     printf("Enter the Number: ");
-    scanf("%d",&a);
+    scanf("%d", &a);
 
-    if(a%2==0){
-        printf("%d is Even",a);
-    }
-    else{
-        printf("%d is Odd",a);
-    }
+    printf("%d is %s", a, (a % 2 == 0) ? "Even" : "Odd");
     return 0;
 }
 ```
@@ -141,18 +131,11 @@ int main() {
 #include <stdio.h>
 
 int main() {
-    int a,b,c;
-    printf("Enter Two Number: ");
-    scanf("%d%d%d",&a,&b,&c);
-    if(a>b && a>c){
-        printf("%d is Greatest",a);
-    }
-    else if(b>c) {
-        printf("%d is Greatest",b);
-    }
-    else{
-        printf("%d is Greatest",c);
-    }
+    int a, b, c;
+    printf("Enter Three Numbers: ");
+    scanf("%d%d%d", &a, &b, &c);
+    int greatest = (a > b && a > c) ? a : (b > c) ? b : c;
+    printf("%d is the Greatest", greatest);
     return 0;
 }
 ```
