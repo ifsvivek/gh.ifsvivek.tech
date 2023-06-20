@@ -35,7 +35,7 @@ google_site_verification:
 google_analytics:
   id: 
 
-theme_mode: dark # [light|dark]
+theme_mode: # [light|dark]
 
 img_cdn: "https://chirpy-img.netlify.app"
 
