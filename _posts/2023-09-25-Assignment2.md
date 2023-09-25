@@ -1,12 +1,12 @@
 ---
-title: "Assignment - 2 BPOPS103."
+title: "Assignment - 2 BPOPS103"
 date: 2023-09-25 00:00:00 -500
-categories: [c, code, psp, college]
+categories: [c, code, college]
 tags: [c, codes, college]
 ---
 # Assignment-2 BPOPS103
 
-## 1.	Write a  C program to read N integers into an array A and to (RBT – Level 3)
+## 1.	Write a  C program to read N integers into an array A and to
 
     * Find the sum of odd numbers
     * Find the sum of even numbers
