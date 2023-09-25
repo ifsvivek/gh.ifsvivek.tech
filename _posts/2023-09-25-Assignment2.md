@@ -1,15 +1,17 @@
 ---
 title: "Assignment - 2 BPOPS103."
-date: 2023-09-26 00:00:00 -500
+date: 2023-09-25 00:00:00 -500
 categories: [c, code, psp, college]
 tags: [c, codes, college]
 ---
 # Assignment-2 BPOPS103
 
 ## 1.	Write a  C program to read N integers into an array A and to (RBT – Level 3)
-	* Find the sum of odd numbers	
+
+    * Find the sum of odd numbers
     * Find the sum of even numbers
     * Find the average of all numbers
+
 ```c
 #include <stdio.h>
 
@@ -42,7 +44,8 @@ int main(){
 }
 ```
 
-## 2. Write a program to replace each constant in a string with the next one except letter ‘z’ ‘Z’ and ‘a’, ‘A’. Thus the string “programming in C is fun” should be modified as “qsphsannjoh jo D jt gvo”. 
+## 2. Write a program to replace each constant in a string with the next one except letter ‘z’ ‘Z’ and ‘a’, ‘A’. Thus the string “programming in C is fun” should be modified as “qsphsannjoh jo D jt gvo”.
+
 ```c
 #include <stdio.h>
 
@@ -70,7 +73,8 @@ int main(){
 }
 ```
 
-## 3. Write a C program to swap 2 numbers using global variable concept and pass by reference concept. 
+## 3. Write a C program to swap 2 numbers using global variable concept and pass by reference concept.
+
 ```c
 #include <stdio.h>
 
@@ -93,7 +97,8 @@ int main(){
     return 0;
 }
 ```
-## 4. Write a C program to print all the prime numbers in a given range. Use functions. 
+
+## 4. Write a C program to print all the prime numbers in a given range. Use functions.
 
 ```c
 #include <stdio.h>
