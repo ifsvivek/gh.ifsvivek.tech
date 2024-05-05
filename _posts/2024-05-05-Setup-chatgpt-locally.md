@@ -76,15 +76,14 @@ ollama install <model-name>
 ### Installing Docker
 
 - Use this command to install Docker
+
 ```bash
-# Add Docker's official GPG key:
 sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 
-# Add the repository to Apt sources:
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
@@ -125,7 +124,7 @@ sudo docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v 
 
 ![](https://i.imgur.com/u15tkri.png)
 
-- Now you can click on the settings icon and add the Ollama API URL and API Key
+- Now you can click on the settings icon and add the Ollama API URL
 
 ![](https://i.imgur.com/CMKYpDJ.png)
 
