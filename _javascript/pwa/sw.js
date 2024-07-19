@@ -3,23 +3,11 @@ import { baseurl } from '../../_config.yml';
 importScripts(`${baseurl}/assets/js/data/swconf.js`);
 
 const purge = swconf.purge;
-const interceptor = swconf.interceptor;
 
 function verifyUrl(url) {
-  const requestUrl = new URL(url);
-  const requestPath = requestUrl.pathname;
+  const requestPath = new URL(url).pathname;
 
-  if (!requestUrl.protocol.startsWith('http')) {
-    return false;
-  }
-
-  for (const prefix of interceptor.urlPrefixes) {
-    if (requestUrl.href.startsWith(prefix)) {
-      return false;
-    }
-  }
-
-  for (const path of interceptor.paths) {
+  for (const path of swconf.denyPaths) {
     if (requestPath.startsWith(path)) {
       return false;
     }

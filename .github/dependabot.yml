@@ -8,10 +8,11 @@ updates:
     directory: "/"
     versioning-strategy: increase
     groups:
-      prod-deps:
-        dependency-type: production
-      dev-deps:
-        dependency-type: development
+      npm:
+        update-types:
+          - "major"
+          - "minor"
+          - "patch"
     schedule:
       interval: "weekly"
   - package-ecosystem: "github-actions"
@@ -22,7 +23,3 @@ updates:
           - "major"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "devcontainers"
-    directory: "/"
-    schedule:
-      interval: weekly
