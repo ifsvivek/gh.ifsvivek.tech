@@ -1,17 +1,17 @@
 import { basic, initSidebar, initTopbar } from './modules/layouts';
 import {
-  imgLazy,
+  loadImg,
   imgPopup,
   initLocaleDatetime,
   initClipboard,
   toc
 } from './modules/plugins';
 
-basic();
-initSidebar();
-initTopbar();
-imgLazy();
+loadImg();
+toc();
 imgPopup();
+initSidebar();
 initLocaleDatetime();
 initClipboard();
-toc();
+initTopbar();
+basic();

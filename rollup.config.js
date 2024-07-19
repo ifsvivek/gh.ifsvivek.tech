@@ -1,40 +1,62 @@
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
-import license from 'rollup-plugin-license';
-import path from 'path';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import yaml from '@rollup/plugin-yaml';
+import fs from 'fs';
+import pkg from './package.json';
 
-const JS_SRC = '_javascript';
-const JS_DIST = 'assets/js/dist';
-const isProd = process.env.NODE_ENV === 'production';
+const SRC_DEFAULT = '_javascript';
+const DIST_DEFAULT = 'assets/js/dist';
 
-function build(filename) {
+const SRC_PWA = `${SRC_DEFAULT}/pwa`;
+const DIST_PWA = '_app';
+
+const banner = `/*!
+ * ${pkg.name} v${pkg.version} | © ${pkg.since} ${pkg.author} | ${pkg.license} Licensed | ${pkg.homepage}
+ */`;
+
+const isProd = process.env.BUILD === 'production';
+
+function cleanup(...directories) {
+  for (const dir of directories) {
+    fs.rm(dir, { recursive: true, force: true }, (err) => {
+      if (err) {
+        console.error(`Failed to remove directory ${dir}: ${err}`);
+      }
+    });
+  }
+}
+
+function build(filename, opts = {}) {
+  const src = opts.src || SRC_DEFAULT;
+  const dist = opts.dist || DIST_DEFAULT;
+
   return {
-    input: [`${JS_SRC}/${filename}.js`],
+    input: `${src}/${filename}.js`,
     output: {
-      file: `${JS_DIST}/${filename}.min.js`,
+      file: `${dist}/${filename}.min.js`,
       format: 'iife',
       name: 'Chirpy',
+      banner,
       sourcemap: !isProd
     },
     watch: {
-      include: `${JS_SRC}/**`
+      include: `${src}/**`
     },
     plugins: [
       babel({
         babelHelpers: 'bundled',
         presets: ['@babel/env'],
-        plugins: ['@babel/plugin-proposal-class-properties']
+        plugins: ['@babel/plugin-transform-class-properties']
       }),
-      license({
-        banner: {
-          commentStyle: 'ignored',
-          content: { file: path.join(__dirname, JS_SRC, '_copyright') }
-        }
-      }),
+      nodeResolve(),
+      yaml(),
       isProd && terser()
     ]
   };
 }
+
+cleanup(DIST_DEFAULT, DIST_PWA);
 
 export default [
   build('commons'),
@@ -42,5 +64,7 @@ export default [
   build('categories'),
   build('page'),
   build('post'),
-  build('misc')
+  build('misc'),
+  build('app', { src: SRC_PWA, dist: DIST_PWA }),
+  build('sw', { src: SRC_PWA, dist: DIST_PWA })
 ];

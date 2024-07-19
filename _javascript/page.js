@@ -1,9 +1,9 @@
 import { basic, initSidebar, initTopbar } from './modules/layouts';
-import { imgLazy, imgPopup, initClipboard } from './modules/plugins';
+import { loadImg, imgPopup, initClipboard } from './modules/plugins';
 
-basic();
+loadImg();
+imgPopup();
 initSidebar();
 initTopbar();
-imgLazy();
-imgPopup();
 initClipboard();
+basic();
