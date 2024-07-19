@@ -1,15 +1,22 @@
 /**
  * Set up image popup
  *
- * Dependencies: https://github.com/biati-digital/glightbox
+ * See: https://github.com/dimsemenov/Magnific-Popup
  */
 
-const IMG_CLASS = 'popup';
-
 export function imgPopup() {
-  if (document.getElementsByClassName(IMG_CLASS).length === 0) {
+  if ($('.popup') <= 0) {
     return;
   }
 
-  GLightbox({ selector: `.${IMG_CLASS}` });
+  $('.popup').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    showCloseBtn: false,
+    zoom: {
+      enabled: true,
+      duration: 300,
+      easing: 'ease-in-out'
+    }
+  });
 }

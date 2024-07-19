@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "name": "my-jekyll-project",
+    "builds": [
+        {
+            "src": "Gemfile",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "_site"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/$1.html"
+        }
+    ]
+}

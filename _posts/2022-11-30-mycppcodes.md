@@ -4,7 +4,6 @@ title:  "My C++ codes."
 date: 2022-11-30 00:00:00 -500
 categories: [c++, code,practice]
 tags: [c++,codes]
-render_with_liquid: false
 ---
 Hello everyone this is my second post, hoping y'all read the first post
 

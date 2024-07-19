@@ -1,6 +1,5 @@
 <!-- The Disqus lazy loading. -->
-
-<div id="disqus_thread">
+<div id="disqus_thread" class="pt-2 pb-2">
   <p class="text-center text-muted small">Comments powered by <a href="https://disqus.com/">Disqus</a>.</p>
 </div>
 
@@ -10,7 +9,7 @@
     this.page.identifier = '{{ page.url }}';
   };
 
-  {%- comment -%} Lazy loading {%- endcomment -%}
+  /* Lazy loading */
   var disqus_observer = new IntersectionObserver(
     function (entries) {
       if (entries[0].isIntersecting) {
@@ -28,12 +27,12 @@
     { threshold: [0] }
   );
 
-  disqus_observer.observe(document.getElementById('disqus_thread'));
+  disqus_observer.observe(document.querySelector('#disqus_thread'));
 
-  {%- comment -%} Auto switch theme {%- endcomment -%}
+  /* Auto switch theme */
   function reloadDisqus() {
     if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
-      {%- comment -%} Disqus hasn't been loaded {%- endcomment -%}
+      /* Disqus hasn't been loaded */
       if (typeof DISQUS === 'undefined') {
         return;
       }
@@ -44,7 +43,7 @@
     }
   }
 
-  if (document.getElementById('mode-toggle')) {
+  if (document.querySelector('.mode-toggle')) {
     window.addEventListener('message', reloadDisqus);
   }
 </script>

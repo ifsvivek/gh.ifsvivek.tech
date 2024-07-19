@@ -19,37 +19,54 @@
     }
 
     constructor() {
+      if (this.hasMode) {
+        if (this.isDarkMode) {
+          if (!this.isSysDarkPrefer) {
+            this.setDark();
+          }
+        } else {
+          if (this.isSysDarkPrefer) {
+            this.setLight();
+          }
+        }
+      }
+
       let self = this;
 
-      {%- comment -%} always follow the system prefers {%- endcomment -%}
+      /* always follow the system prefers */
       this.sysDarkPrefers.addEventListener('change', () => {
         if (self.hasMode) {
+          if (self.isDarkMode) {
+            if (!self.isSysDarkPrefer) {
+              self.setDark();
+            }
+          } else {
+            if (self.isSysDarkPrefer) {
+              self.setLight();
+            }
+          }
+
           self.clearMode();
         }
+
         self.notify();
       });
-
-      if (!this.hasMode) {
-        return;
-      }
-
-      if (this.isDarkMode) {
-        this.setDark();
-      } else {
-        this.setLight();
-      }
-    }
+    } /* constructor() */
 
     get sysDarkPrefers() {
       return window.matchMedia('(prefers-color-scheme: dark)');
     }
 
-    get isPreferDark() {
+    get isSysDarkPrefer() {
       return this.sysDarkPrefers.matches;
     }
 
     get isDarkMode() {
       return this.mode === ModeToggle.DARK_MODE;
+    }
+
+    get isLightMode() {
+      return this.mode === ModeToggle.LIGHT_MODE;
     }
 
     get hasMode() {
@@ -60,12 +77,12 @@
       return sessionStorage.getItem(ModeToggle.MODE_KEY);
     }
 
-    {%- comment -%} get the current mode on screen {%- endcomment -%}
+    /* get the current mode on screen */
     get modeStatus() {
-      if (this.hasMode) {
-        return this.mode;
+      if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) {
+        return ModeToggle.DARK_MODE;
       } else {
-        return this.isPreferDark ? ModeToggle.DARK_MODE : ModeToggle.LIGHT_MODE;
+        return ModeToggle.LIGHT_MODE;
       }
     }
 
@@ -84,9 +101,7 @@
       sessionStorage.removeItem(ModeToggle.MODE_KEY);
     }
 
-    {%- comment -%}
-      Notify another plugins that the theme mode has changed
-    {%- endcomment -%}
+    /* Notify another plugins that the theme mode has changed */
     notify() {
       window.postMessage(
         {
@@ -99,9 +114,21 @@
 
     flipMode() {
       if (this.hasMode) {
-        this.clearMode();
+        if (this.isSysDarkPrefer) {
+          if (this.isLightMode) {
+            this.clearMode();
+          } else {
+            this.setLight();
+          }
+        } else {
+          if (this.isDarkMode) {
+            this.clearMode();
+          } else {
+            this.setDark();
+          }
+        }
       } else {
-        if (this.isPreferDark) {
+        if (this.isSysDarkPrefer) {
           this.setLight();
         } else {
           this.setDark();
@@ -109,8 +136,8 @@
       }
 
       this.notify();
-    }
-  }
+    } /* flipMode() */
+  } /* ModeToggle */
 
   const modeToggle = new ModeToggle();
 </script>

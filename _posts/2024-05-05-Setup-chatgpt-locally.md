@@ -3,7 +3,6 @@ title: Set up ChatGPT locally using Ollama and open webui
 date: 2024-05-05 00:00:00 -500
 categories: [ai, chatgpt, ollama, guide]
 tags: [ai, chatgpt, ollama, guide]
-render_with_liquid: false
 ---
 
 # Set up ChatGPT Locally Using Ollama and Open Webui

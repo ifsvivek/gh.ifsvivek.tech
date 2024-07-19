@@ -3,7 +3,6 @@ title: "Assignment - 2 BPOPS103"
 date: 2023-09-25 00:00:00 -500
 categories: [c, code, college]
 tags: [c, codes, college]
-render_with_liquid: false
 ---
 # Assignment-2 BPOPS103
 
