@@ -4,6 +4,7 @@ title: "My java codes."
 date: 2022-11-21 00:00:00 -500
 categories: [java, code,practice]
 tags: [java,codes]
+render_with_liquid: false
 ---
 # My java codes
 

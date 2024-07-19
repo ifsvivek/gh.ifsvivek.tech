@@ -4,6 +4,7 @@ title: "Real-Time Light Sensor Data Plotting using Python and Matplotlib"
 date: 2023-03-19 00:00:00 -500
 categories: [arduino, code, python]
 tags: [arduino, codes, python]
+render_with_liquid: false
 ---
 # Monitoring Light Intensity with a Light Sensor and Python
 
